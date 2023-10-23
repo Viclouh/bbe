@@ -1,0 +1,33 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    string BASE_URL = "https://localhost:7091/api/Characters";
+}
+
+<div>
+    
+        <form method="post" action="@BASE_URL">
+        <input type="hidden" value="@ViewBag.CharacterId" name="Id" />
+        <input type="hidden" value="null" name="Image" />
+        <table>
+            <tr>
+                <td><p>Введите имя </p></td>
+                <td><input type="text" name="Name" /> </td>
+            </tr>
+            <tr>
+                <td><p>Введите Статус :</p></td>
+                <td><input type="text" name="Status" /> </td>
+            </tr>
+            <tr>
+                <td><p>Введите Раса:</p></td>
+                <td><input type="text" name="Species" /> </td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Отправить" /> </td>
+                <td></td>
+            </tr>
+        </table>
+        </form>
+
+</div>
