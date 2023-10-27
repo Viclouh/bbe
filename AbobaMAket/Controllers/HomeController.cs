@@ -28,7 +28,7 @@ namespace AbobaMAket.Controllers
         {
             return View();
         }
-        public IActionResult Index1()
+        public IActionResult Input()
         {
             return View();
         }

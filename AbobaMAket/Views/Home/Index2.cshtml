@@ -2,49 +2,66 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-    string BASE_URL = "https://localhost:7091/api/";
+    //string BASE_URL = "https://localhost:7091/api/";
 
 
-    HttpClientHandler clientHandler = new HttpClientHandler();
-    clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
+    //HttpClientHandler clientHandler = new HttpClientHandler();
+    //clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
 
 
-    HttpClient client = new HttpClient(clientHandler);
-    client.BaseAddress = new Uri(BASE_URL);
-    client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+    //HttpClient client = new HttpClient(clientHandler);
+    //client.BaseAddress = new Uri(BASE_URL);
+    //client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
 
 
-    List<Character> Names = new List<Character>();
+    //List<Character> Names = new List<Character>();
 
 
-    HttpResponseMessage response = client.GetAsync("Characters").Result;
-    if (response.IsSuccessStatusCode)
-    {
-        Characters dataObj = response.Content.ReadFromJsonAsync<Characters>().Result;
-        Names = dataObj.Results;
-    }
+    //HttpResponseMessage response = client.GetAsync("Characters").Result;
+    //if (response.IsSuccessStatusCode)
+    //{
+    //    Characters dataObj = response.Content.ReadFromJsonAsync<Characters>().Result;
+    //    Names = dataObj.Results;
+    //}
+    List<Service> Services = ApplicationContext.Instantce.Services.ToList();
 }
 
 
 
 <div style="display:flex; flex-wrap:wrap; ">
-        @foreach (Character item in Names)
-        {
-        <article style="flex-wrap:wrap; display:flex; min-width:auto; max-width:auto; padding: 10px; margin:10px;">
-                <div>
-                    <img src="@item.Image" alt="@item.Name">
-                </div>
-                <div class="characterCard__ContentWrapper-sc-1ejywvi-2 isMAic">
-                    <div class="section">                        
-                            <h2>@item.Name</h2>
-                        <span class="status">
-                            <span class="status__icon">
+    @*@foreach (Character item in Names)
+    {
+    <article style="flex-wrap:wrap; display:flex; min-width:auto; max-width:auto; padding: 10px; margin:10px;">
+    <div>
+    <img src="@item.Image" alt="@item.Name">
+    </div>
+    <div class="characterCard__ContentWrapper-sc-1ejywvi-2 isMAic">
+    <div class="section">
+    <h2>@item.Name</h2>
+    <span class="status">
+    <span class="status__icon">
 
-                            </span>
-                            @item.Status - @item.Species
-                        </span>
-                    </div>                    
-                </div>
-            </article>
-        }
+    </span>
+    @item.Status - @item.Species
+    </span>
+    </div>
+    </div>
+    </article>
+    }*@
+    @foreach (Service item in Services)
+    {
+        <div class="card">
+            <div class="card-image">
+                <img class="card-image--1" src="https://cdn3.iconfinder.com/data/icons/education-209/64/microscope-lab-science-school-512.png"
+                     alt="">
+                <img class="card-image--2" src="https://cdn3.iconfinder.com/data/icons/education-209/64/tube-lab-science-school-512.png"
+                     alt="">
+            </div>
+            <div class="card-body">
+                <h2 class="card-title">Science</h2>
+                <p>View science related resources</p>
+                <a class="btn btn-purple" href="#">Go to Science</a>
+            </div>
+        </div>
+    }
 </div>
